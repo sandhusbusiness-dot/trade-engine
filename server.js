@@ -28,5 +28,12 @@ app.use("/binance", createProxyMiddleware({
     pathRewrite: { "^/binance": "" },
 }));
 
+// Kraken Futures proxy
+app.use("/kraken", createProxyMiddleware({
+    target: "https://futures.kraken.com",
+    changeOrigin: true,
+    pathRewrite: { "^/kraken": "" },
+}));
+
 app.get("/health", (req, res) => res.json({ status: "ok" }));
 app.listen(process.env.PORT || 3001);
