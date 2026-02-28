@@ -21,5 +21,12 @@ app.use("/bybit", createProxyMiddleware({
     pathRewrite: { "^/bybit": "" },
 }));
 
+// Binance Futures proxy
+app.use("/binance", createProxyMiddleware({
+    target: "https://fapi.binance.com",
+    changeOrigin: true,
+    pathRewrite: { "^/binance": "" },
+}));
+
 app.get("/health", (req, res) => res.json({ status: "ok" }));
 app.listen(process.env.PORT || 3001);
