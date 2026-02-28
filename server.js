@@ -14,5 +14,12 @@ app.use("/kucoin", createProxyMiddleware({
   pathRewrite: { "^/kucoin": "" },
 }));
 
+// Bybit proxy
+app.use("/bybit", createProxyMiddleware({
+    target: "https://api.bybit.com",
+    changeOrigin: true,
+    pathRewrite: { "^/bybit": "" },
+}));
+
 app.get("/health", (req, res) => res.json({ status: "ok" }));
 app.listen(process.env.PORT || 3001);
