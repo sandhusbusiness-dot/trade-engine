@@ -31,7 +31,7 @@ app.use("/binance", createProxyMiddleware({
 app.use("/kraken", createProxyMiddleware({
     target: "https://futures.kraken.com",
     changeOrigin: true,
-    pathRewrite: { "^/kraken": "/derivatives/api" },
+    pathRewrite: { "^/kraken": "" },
 }));
 
 
