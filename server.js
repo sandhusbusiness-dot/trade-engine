@@ -28,6 +28,14 @@ app.use("/binance", createProxyMiddleware({
     pathRewrite: { "^/binance": "" },
 }));
 
+// Binance Spot/SAPI proxy (ADD THIS)
+app.use("/binance-spot", createProxyMiddleware({
+    target: "https://api.binance.com",
+    changeOrigin: true,
+    pathRewrite: { "^/binance-spot": "" },
+}));
+
+
 app.use("/kraken", createProxyMiddleware({
     target: "https://futures.kraken.com",
     changeOrigin: true,
