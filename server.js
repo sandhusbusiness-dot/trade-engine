@@ -43,5 +43,13 @@ app.use("/kraken", createProxyMiddleware({
 }));
 
 
+// Bitget proxy
+app.use("/bitget", createProxyMiddleware({
+  target: "https://api.bitget.com",
+  changeOrigin: true,
+  pathRewrite: { "^/bitget": "" },
+}));
+
+
 app.get("/health", (req, res) => res.json({ status: "ok" }));
 app.listen(process.env.PORT || 3001);
