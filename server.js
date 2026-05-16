@@ -50,11 +50,12 @@ app.use("/bitget", createProxyMiddleware({
   pathRewrite: { "^/bitget": "" },
 }));
 
-// BloFin proxy
-app.use("/blofin", createProxyMiddleware({
+app.use("/blofin", (req, res, next) => {
+  console.log("BLOFIN HIT", req.method, req.originalUrl);
+  next();
+}, createProxyMiddleware({
   target: "https://openapi.blofin.com",
   changeOrigin: true,
-  pathRewrite: { "^/blofin": "" },
 }));
 
 
