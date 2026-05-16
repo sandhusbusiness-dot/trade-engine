@@ -50,13 +50,14 @@ app.use("/bitget", createProxyMiddleware({
   pathRewrite: { "^/bitget": "" },
 }));
 
-
-app.get("/health", (req, res) => res.json({ status: "ok" }));
-app.listen(process.env.PORT || 3001);
-
 // BloFin proxy
 app.use("/blofin", createProxyMiddleware({
   target: "https://openapi.blofin.com",
   changeOrigin: true,
   pathRewrite: { "^/blofin": "" },
 }));
+
+
+app.get("/health", (req, res) => res.json({ status: "ok" }));
+app.listen(process.env.PORT || 3001);
+
