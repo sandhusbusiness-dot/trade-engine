@@ -56,7 +56,13 @@ app.use("/blofin", (req, res, next) => {
 }, createProxyMiddleware({
   target: "https://openapi.blofin.com",
   changeOrigin: true,
+  pathRewrite: { "^/blofin": "" },
+  secure: true,
+  xfwd: false,
+  proxyTimeout: 30000,
+  timeout: 30000,
 }));
+
 
 
 app.get("/health", (req, res) => res.json({ status: "ok" }));
